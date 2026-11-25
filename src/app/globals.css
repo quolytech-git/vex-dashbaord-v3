@@ -1,0 +1,259 @@
+@import "tailwindcss";
+
+:root {
+  --bg-canvas: #eef3fa;
+  --bg-ice: #e8eff6;
+  --bg-white-glass: rgba(255, 255, 255, 0.88);
+  --surface-dark: #222528;
+  --surface-dark-nav: #1c1f22;
+  --surface-dark-card: #2c3033;
+  --surface-dark-btn: #33373b;
+  --surface-steel: #7898b0;
+  --surface-steel-deep: #6b8ca5;
+  --accent-lime: #d4fb35;
+  --accent-lime-dim: #bde81e;
+  --ink-primary: #181b1e;
+  --ink-muted: #6c7581;
+  --ink-subtle: #949eab;
+  --accent-good: #0e7c4d;
+  --accent-warn: #c46a0b;
+  --accent-bad: #c9332b;
+  --accent-info: #2e67b2;
+  --font-display: "Plus Jakarta Sans", "Inter", -apple-system, BlinkMacSystemFont, sans-serif;
+  --font-sans: "Inter", -apple-system, BlinkMacSystemFont, sans-serif;
+  --font-mono: "JetBrains Mono", ui-monospace, SFMono-Regular, Menlo, monospace;
+}
+
+html {
+  background-color: #eef3fa;
+  color: var(--ink-primary);
+  -webkit-tap-highlight-color: transparent;
+}
+
+body {
+  min-height: 100vh;
+  background-color: #eef3fa;
+  background-image:
+    radial-gradient(ellipse 60% 45% at 6% 3%, rgba(196, 217, 242, 0.65) 0%, transparent 60%),
+    radial-gradient(ellipse 58% 45% at 94% 4%, rgba(190, 214, 242, 0.62) 0%, transparent 60%),
+    linear-gradient(180deg, #f3f7fc 0%, #eef3fa 48%, #e8eff8 100%);
+  background-attachment: fixed;
+  color: var(--ink-primary);
+  font-family: var(--font-sans);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  overflow-x: hidden;
+}
+
+.font-display {
+  font-family: var(--font-display);
+}
+
+.font-mono-code {
+  font-family: var(--font-mono);
+}
+
+/* Signature diagonal-striped acid-lime progress fill from reference UI */
+.vex-striped-lime {
+  background-image: repeating-linear-gradient(
+    -52deg,
+    #d4fb35 0px,
+    #d4fb35 5px,
+    #bbe81b 5px,
+    #bbe81b 9px
+  );
+}
+
+/* Subtle diagonal-hatched "+" slot inside the steel-blue detail card */
+.vex-hatched-slot {
+  background-image: repeating-linear-gradient(
+    -45deg,
+    rgba(255, 255, 255, 0.04) 0px,
+    rgba(255, 255, 255, 0.04) 6px,
+    rgba(255, 255, 255, 0.11) 6px,
+    rgba(255, 255, 255, 0.11) 7px
+  );
+}
+
+/* Soft frosted white/ice bento cards */
+.vex-bento-ice {
+  background: linear-gradient(145deg, rgba(232, 239, 247, 0.94) 0%, rgba(224, 233, 243, 0.86) 100%);
+  backdrop-filter: blur(18px);
+  -webkit-backdrop-filter: blur(18px);
+  border: 1px solid rgba(255, 255, 255, 0.9);
+  box-shadow:
+    0 12px 32px rgba(140, 160, 185, 0.14),
+    inset 0 1px 0 rgba(255, 255, 255, 0.95);
+}
+
+.vex-bento-white {
+  background: linear-gradient(160deg, rgba(255, 255, 255, 0.95) 0%, rgba(246, 249, 253, 0.9) 100%);
+  backdrop-filter: blur(18px);
+  -webkit-backdrop-filter: blur(18px);
+  border: 1px solid rgba(255, 255, 255, 0.98);
+  box-shadow:
+    0 12px 32px rgba(140, 160, 185, 0.14),
+    inset 0 1px 0 rgba(255, 255, 255, 1);
+}
+
+/* Top-center concave notch tab dock sitting seamlessly in the #eef3fa canvas */
+.vex-notch-bridge {
+  position: relative;
+  background: #eef3fa;
+  border-bottom-left-radius: 26px;
+  border-bottom-right-radius: 26px;
+}
+
+.vex-notch-bridge::before,
+.vex-notch-bridge::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  width: 24px;
+  height: 24px;
+  pointer-events: none;
+}
+
+.vex-notch-bridge::before {
+  left: -24px;
+  background: radial-gradient(circle at 0 24px, transparent 23.5px, #eef3fa 24px);
+}
+
+.vex-notch-bridge::after {
+  right: -24px;
+  background: radial-gradient(circle at 24px 24px, transparent 23.5px, #eef3fa 24px);
+}
+
+/* Crisp global tactile button responsiveness across desktop & touch */
+.vex-app button:not(:disabled),
+.vex-app [role="button"] {
+  transition:
+    transform 160ms cubic-bezier(0.22, 1, 0.36, 1),
+    background-color 160ms ease,
+    border-color 160ms ease,
+    color 160ms ease,
+    box-shadow 180ms cubic-bezier(0.22, 1, 0.36, 1),
+    filter 160ms ease;
+}
+
+.vex-app button:not(:disabled):active {
+  transform: scale(0.96);
+}
+
+/* Scrollbar utilities */
+.no-scrollbar {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+.no-scrollbar::-webkit-scrollbar {
+  display: none;
+}
+
+::-webkit-scrollbar {
+  width: 7px;
+  height: 7px;
+}
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+::-webkit-scrollbar-thumb {
+  background: rgba(110, 125, 145, 0.25);
+  border-radius: 999px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: rgba(110, 125, 145, 0.45);
+}
+
+/* Mobile Liquid-Glass iOS Companion Surface Classes */
+.vex-glass {
+  background: linear-gradient(180deg, rgba(255, 255, 255, 0.88) 0%, rgba(233, 240, 248, 0.82) 100%);
+  -webkit-backdrop-filter: blur(22px) saturate(185%);
+  backdrop-filter: blur(22px) saturate(185%);
+  border: 1px solid rgba(255, 255, 255, 0.88);
+  box-shadow:
+    0 14px 34px rgba(24, 27, 30, 0.16),
+    0 2px 8px rgba(24, 27, 30, 0.08),
+    inset 0 1px 0 rgba(255, 255, 255, 0.95);
+  transform: translateZ(0);
+  backface-visibility: hidden;
+}
+
+.vex-glass-bar {
+  background: rgba(238, 243, 250, 0.82);
+  -webkit-backdrop-filter: blur(20px) saturate(180%);
+  backdrop-filter: blur(20px) saturate(180%);
+  border-bottom: 1px solid transparent;
+  transition: border-color 0.2s ease, background-color 0.2s ease;
+  transform: translateZ(0);
+  backface-visibility: hidden;
+}
+
+.vex-glass-bar[data-scrolled="true"] {
+  background: rgba(238, 243, 250, 0.94);
+  border-bottom-color: rgba(24, 27, 30, 0.08);
+}
+
+.vex-glass-btn {
+  background: rgba(255, 255, 255, 0.86);
+  -webkit-backdrop-filter: blur(14px) saturate(170%);
+  backdrop-filter: blur(14px) saturate(170%);
+  border: 1px solid rgba(255, 255, 255, 0.98);
+  box-shadow:
+    0 2px 10px rgba(30, 41, 59, 0.06),
+    inset 0 1px 0 rgba(255, 255, 255, 1);
+}
+
+.ios-card {
+  border-radius: 22px;
+  border: 1px solid rgba(255, 255, 255, 0.95);
+  background: rgba(255, 255, 255, 0.9);
+  box-shadow: 0 4px 16px rgba(140, 160, 185, 0.12);
+}
+
+@media (max-width: 1023.98px) {
+  html,
+  body {
+    overscroll-behavior-y: none;
+  }
+
+  .vex-snap-rail {
+    display: flex;
+    flex-wrap: nowrap !important;
+    overflow-x: auto;
+    overscroll-behavior-x: contain;
+    scroll-snap-type: x proximity;
+    scrollbar-width: none;
+    -webkit-overflow-scrolling: touch;
+    -webkit-mask-image: linear-gradient(to right, #000 calc(100% - 26px), transparent);
+    mask-image: linear-gradient(to right, #000 calc(100% - 26px), transparent);
+    padding-right: 24px;
+  }
+  .vex-snap-rail::-webkit-scrollbar {
+    display: none;
+  }
+  .vex-snap-rail > * {
+    flex-shrink: 0;
+    white-space: nowrap;
+    scroll-snap-align: start;
+  }
+
+  .vex-app main button.rounded-full,
+  .vex-app main a.rounded-full {
+    min-height: 36px;
+  }
+
+  .vex-app main .grid > *,
+  .vex-app main .flex > * {
+    min-width: 0;
+  }
+}
+
+@media print {
+  body {
+    background: #ffffff !important;
+    color: #000000 !important;
+  }
+  .no-print {
+    display: none !important;
+  }
+}
